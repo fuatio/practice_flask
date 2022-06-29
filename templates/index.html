@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Library</title>
-</head>
-<body>
-<h1>My Library</h1>
+  </head>
+  <body>
+    <h1>My Library</h1>
+    {% if all_books != []: %}
     <ul>
-        <li></li>
+      {% for row in all_books: %}
+      <li>{{ row['title'] }} - {{ row['author'] }} - {{ row['rating'] }}/10</li>
+      {% endfor %}
     </ul>
-    
-<a href="">Add New Book</a>
-</body>
+    {% else %}
+    <p>Library is empty</p>
+    {% endif %}
+
+    <a href="/add">Add New Book</a>
+  </body>
 </html>
