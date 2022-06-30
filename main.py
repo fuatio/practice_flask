@@ -1,7 +1,8 @@
+from tokenize import String
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired
 import csv
 
@@ -12,7 +13,14 @@ Bootstrap(app)
 
 class CafeForm(FlaskForm):
     cafe = StringField('Cafe name', validators=[DataRequired()])
+    location_url = StringField('Location', validators=[DataRequired()])
+    open_time = StringField('Open Time', validators=[DataRequired()])
+    close_time = StringField('Closing Time', validators=[DataRequired()])
+    coffee_rating = SelectField('Coffee Rating', choices=[0, 1, 2, 3, 4, 5], validators=[DataRequired()])
+    wifi_rating = SelectField('WiFi Rating', choices=[0, 1, 2, 3, 4, 5], validators=[DataRequired()])
+    power_outlet_rating = SelectField('Power Outlet Rating', choices=[0, 1, 2, 3, 4, 5], validators=[DataRequired()])
     submit = SubmitField('Submit')
+
 
 # Exercise:
 # add: Location URL, open time, closing time, coffee rating, wifi rating, power outlet rating fields
